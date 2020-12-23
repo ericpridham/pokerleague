@@ -1,10 +1,11 @@
-const { Client } = require('pg')
-const client = new Client()
+const { Pool } = require('pg')
+
+const pool = new Pool()
 
 exports.handler = async function(event, context) {
   let { season } = event.queryStringParameters;
 
-  await client.connect()
+  const client = await pool.connect()
 
   if (!season) {
     const { rows } = await client.query('select max(id) last_season from seasons')
