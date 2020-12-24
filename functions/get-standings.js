@@ -40,7 +40,6 @@ exports.handler = async function(event, context) {
 
   const { rows } = await client.query(standingsQuery, [season])
   client.release()
-  await pool.end()
 
   return {
     statusCode: 200,
