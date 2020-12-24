@@ -6,26 +6,26 @@
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
             <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/4 md:text-xs md:text-lg">
+              <th scope="col" class="px-3 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider md:text-xs md:text-lg">
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider md:text-xs md:text-lg">
+              <th scope="col" class="px-3 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider md:text-xs md:text-lg">
                 Top Finishes
               </th>
-              <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider md:text-xs md:text-lg">
+              <th scope="col" class="px-3 md:px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider md:text-xs md:text-lg">
                 Points
               </th>
             </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
             <tr v-for="player in standings">
-              <td :class="{}" class="py-3 px-6 whitespace-nowrap">
+              <td :class="{}" class="py-3 px-3 md:px-6 whitespace-nowrap">
                 <div class="flex items-center">
                   <div
                     :class="{'bg-gray-300 text-center font-semibold rounded-full text-white': player.rank <= 3, 'bg-yellow-400': player.rank === '1', 'bg-gray-400': player.rank === '2', 'bg-orange-400': player.rank === '3'}"
-                    class="text-sm md:text-xl mx-2 w-8 md:w-10 h-8 md:h-10 p-1 text-center">
+                    class="text-sm md:text-xl md:mx-2 w-8 md:w-10 h-8 md:h-10 p-1 text-center">
                     {{ player.rank }}
                   </div>
-                  <div class="flex-shrink-0 hh-8 md:-10 w-8 md:w-10 ml-4">
+                  <div class="flex-shrink-0 hh-8 md:-10 w-8 md:w-10 ml-4 hidden sm:block">
                     <img v-if="player.meetup_avatar"
                          class="h-8 md:h-10 w-8 md:w-10 rounded-full"
                          :src="player.meetup_avatar"
@@ -41,7 +41,7 @@
                   </div>
                 </div>
               </td>
-              <td :class="{}" class="py-3 px-6 whitespace-nowrap">
+              <td :class="{}" class="py-3 px-3 md:px-6 whitespace-nowrap">
                 <div v-for="finish in topFinishes(player)"
                      :title="'Game ' + finish.game" class="inline-flex mr-1">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
@@ -52,7 +52,7 @@
                   </svg>
                 </div>
               </td>
-              <td :class="{}" class="py-3 px-6 whitespace-nowrap text-sm md:text-xl text-right">
+              <td :class="{}" class="py-3 px-3 md:px-6 whitespace-nowrap text-sm md:text-xl text-right">
                 {{ player.total_points }}
               </td>
             </tr>
